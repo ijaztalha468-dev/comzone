@@ -55,7 +55,7 @@ export default function ProductCard({ product }) {
       </Link>
 
       {/* Product Info */}
-      <div className="product-info">
+      <div className="flex flex-col pt-1">
 
         <h3 className="text-base mt-2 mb-0.5 mx-0">
           {product.name}

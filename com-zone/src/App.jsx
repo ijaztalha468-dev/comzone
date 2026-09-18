@@ -7,11 +7,6 @@ import WhatsAppButton from "./components/Common/WhatsAppButton";
 import FloatingCartButton from "./components/Common/FloatingCartButton";
 import CartDrawer from "./components/Cart/CartDrawer";
 
-// CSS Files
-
-import "./css/App.css";
-
-
 
 export default function App() {
 

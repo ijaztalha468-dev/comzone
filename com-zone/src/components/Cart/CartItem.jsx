@@ -21,7 +21,7 @@ export default function CartItem({ item }) {
       />
 
       {/* Product Info */}
-      <div className="cart-info">
+      <div className="flex-1 min-w-0 flex flex-col items-start text-left">
 
         <h3 className="mb-2.5">
           {item.name}
