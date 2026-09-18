@@ -1,0 +1,219 @@
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   COM-ZONE — Global Theme (CSS variables + true global element resets)
+   Kept as plain CSS on purpose: these apply to bare tags (body, a, button,
+   input, h1-h3, ::selection, scrollbar, etc.) across the whole app and
+   drive the dark/light theme toggle via [data-theme]. Every component-level
+   custom class has been converted to Tailwind utility classes in the JSX.
+   ========================================================================== */
+
+:root {
+  /* Backgrounds — deep navy, not flat black, so the blue accent has room to glow */
+  --bg: #0b1120;
+  --bg-elevated: #111a2e;
+  --bg-elevated-2: #182338;
+  --bg-card: #0f172a;
+  --bg-hover: #1b2740;
+
+  /* Borders */
+  --border: #263248;
+  --border-soft: #1a2438;
+
+  /* Text — cool off-white, ties to the blue accent */
+  --text: #eef2fa;
+  --text-muted: #9aa8c4;
+  --text-dim: #5c6a85;
+  --white: #ffffff;
+
+  /* Accent — electric blue, the primary "signal" color */
+  --red: #3b82f6;
+  --red-hover: #60a5fa;
+  --red-dark: #1d4ed8;
+  --red-bg: rgba(59, 130, 246, 0.16);
+  --red-border: rgba(59, 130, 246, 0.4);
+
+  /* Secondary accent — cyan, used sparingly for a second signal */
+  --teal: #22d3ee;
+  --teal-hover: #67e8f9;
+  --teal-bg: rgba(34, 211, 238, 0.16);
+  --teal-border: rgba(34, 211, 238, 0.38);
+
+  /* Semantic (kept distinct from the accent) */
+  --success: #34d399;
+  --success-bg: rgba(52, 211, 153, 0.12);
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --danger-bg: rgba(248, 113, 113, 0.12);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.55);
+  --shadow-red: 0 8px 24px rgba(59, 130, 246, 0.38);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+/* ==========================================================================
+   LIGHT MODE — overrides applied when <html data-theme="light">
+   ========================================================================== */
+
+[data-theme="light"] {
+  --bg: #f4f7fc;
+  --bg-elevated: #ffffff;
+  --bg-elevated-2: #e9f0fb;
+  --bg-card: #ffffff;
+  --bg-hover: #dde9fa;
+
+  --border: #d7e2f3;
+  --border-soft: #e7eef9;
+
+  --text: #0f172a;
+  --text-muted: #51617d;
+  --text-dim: #8896ae;
+  --white: #ffffff;
+
+  --red: #1d63d8;
+  --red-hover: #2f7dfd;
+  --red-dark: #14458f;
+  --red-bg: rgba(29, 99, 216, 0.08);
+  --red-border: rgba(29, 99, 216, 0.3);
+
+  --teal: #0891b2;
+  --teal-hover: #06b6d4;
+  --teal-bg: rgba(8, 145, 178, 0.08);
+  --teal-border: rgba(8, 145, 178, 0.28);
+
+  --success: #16a34a;
+  --success-bg: rgba(22, 163, 74, 0.1);
+  --warning: #b45309;
+  --danger: #dc2626;
+  --danger-bg: rgba(220, 38, 38, 0.1);
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 10px 26px rgba(15, 23, 42, 0.1);
+  --shadow-red: 0 8px 20px rgba(29, 99, 216, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-color: var(--bg-hover) var(--bg);
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--red-hover);
+}
+
+a:active {
+  color: var(--red);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+main {
+  min-height: 80vh;
+  background: var(--bg);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  background: var(--red);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  background: var(--red-hover);
+  box-shadow: var(--shadow-red);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  background: var(--bg-hover);
+  color: var(--text-dim);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+input,
+select,
+textarea {
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px var(--red-bg);
+}
+
+::selection {
+  background: var(--red-bg);
+  color: var(--white);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-hover);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red-dark);
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 15px;
+  color: var(--text);
+  font-weight: 700;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+section {
+  padding: 0px 0;
+}
