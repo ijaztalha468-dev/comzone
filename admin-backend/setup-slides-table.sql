@@ -1,0 +1,10 @@
+-- ComZoneDB par ye chalayein
+
+CREATE TABLE Slides (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(200) NOT NULL,
+    Text NVARCHAR(500) NULL,
+    ImageUrl NVARCHAR(500) NOT NULL,
+    LinkUrl NVARCHAR(200) NULL,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);

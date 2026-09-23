@@ -1,0 +1,8 @@
+-- ComZoneDB par ye chalayein
+
+CREATE TABLE Brands (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    ImageUrl NVARCHAR(500) NOT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
